@@ -1,60 +1,51 @@
 Output docs/demo.gif
 
+Set Shell "bash"
 Set FontSize 16
 Set Width 1200
 Set Height 760
+Set TypingSpeed 20ms
+Set Framerate 24
 Set Theme "Catppuccin Mocha"
 
-Type "GOCACHE=$PWD/.cache/go-build go run ./cmd/rvw run -- sh docs/demo-output.sh"
+Hide
+Type "mkdir -p .cache/demo-bin"
 Enter
+Type "GOCACHE=$PWD/.cache/go-build go build -o .cache/demo-bin/rvw ./cmd/rvw"
+Enter
+Type "cp docs/demo-output.sh .cache/demo-bin/terraform"
+Enter
+Type "chmod +x .cache/demo-bin/terraform"
+Enter
+Type "export PATH=$PWD/.cache/demo-bin:$PATH"
+Enter
+Type "export PS1='$ '"
+Enter
+Type "clear"
+Enter
+Type "rvw run terraform plan"
+Enter
+Sleep 300ms
+Show
 
-Sleep 1s
-Type "j"
-Sleep 200ms
-Type "j"
-Sleep 200ms
-Type "j"
-Sleep 200ms
-Type "j"
-Sleep 200ms
-Type "j"
-Sleep 200ms
-Type "j"
-Sleep 200ms
-Type "j"
-Sleep 200ms
+Sleep 250ms
+Type@50ms "jjjjjjj"
+Sleep 80ms
 Type "c"
-Sleep 300ms
-Type "Block this wildcard policy before merge."
+Sleep 80ms
+Type "Block wildcard IAM policy."
 Enter
-Sleep 700ms
-Type "j"
-Sleep 200ms
-Type "j"
-Sleep 200ms
-Type "j"
-Sleep 200ms
-Type "j"
-Sleep 200ms
-Type "j"
-Sleep 200ms
-Type "j"
-Sleep 200ms
-Type "j"
-Sleep 200ms
-Type "j"
-Sleep 200ms
-Type "j"
-Sleep 200ms
-Type "j"
-Sleep 200ms
-Type "j"
-Sleep 200ms
+Sleep 220ms
+Type@50ms "jjjjjjjjjj"
+Sleep 80ms
 Type "c"
-Sleep 300ms
-Type "Confirm this retention reduction is approved."
+Sleep 80ms
+Type "Confirm DB resize window and rollback plan."
 Enter
-Sleep 700ms
+Sleep 220ms
 Type "y"
-Sleep 900ms
+Sleep 500ms
 Type "q"
+Hide
+Type "rm -rf .cache/demo-bin"
+Enter

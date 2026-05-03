@@ -1,14 +1,52 @@
 # rvw
 
-`rvw` is a terminal review layer for command output. It runs a command, captures its output, and opens a split terminal UI where you can attach line-bound comments and copy a Markdown review report.
+Review terminal output without copy-paste loops.
 
-The MVP uses captured-output review mode. It is generic by design and is not tied to any specific command or AI tool.
+Run any command, comment on exact lines, and copy a clean Markdown report.
+
+Useful for:
+
+- `terraform plan`
+- test failures
+- logs
+- diffs
+- AI tool output
+
+## Demo
+
+Review terraform-style output, comment on exact lines, then export the report.
 
 ![rvw demo](docs/demo.gif)
 
+Example comments:
+
+- `L8`: Block wildcard IAM policy.
+- `L18`: Confirm DB resize window and rollback plan.
+
+## Example exported report
+
+```md
+# rvw review
+
+Command:
+terraform plan
+
+## Comments
+
+### L8
+> Action = *
+
+Block wildcard IAM policy.
+
+### L18
+> instance_class = db.t3.medium -> db.t4g.medium
+
+Confirm DB resize window and rollback plan.
+```
+
 ## Status
 
-`rvw` is an early MVP. It is ready to try on macOS for captured-output review workflows, but the command must finish before the TUI opens. Live streaming output, fully interactive command passthrough, persistence, and broader platform support are planned but not implemented yet.
+`rvw` is an early usable MVP. It is ready to try on macOS for captured-output review workflows, but the command must finish before the TUI opens. Live streaming output, fully interactive command passthrough, persistence, and broader platform support are planned but not implemented yet.
 
 ## Install From Source
 
@@ -77,7 +115,7 @@ Command arguments are shown in the TUI and Markdown report. Avoid putting secret
 - Exported Markdown may contain sensitive command output, command arguments, or review comments. Review it before sharing.
 - `rvw` executes the command you provide with `exec.CommandContext`; it does not invoke a shell unless you explicitly run one, such as `rvw run -- sh -c '...'`.
 
-## Markdown Export
+## Markdown Export Format
 
 Press `e` or `y` to copy a Markdown report:
 
