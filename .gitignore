@@ -1,0 +1,20 @@
+# Go build outputs
+/rvw
+*.test
+*.out
+coverage.*
+.coverprofile
+profile.cov
+.cache/
+
+# Local env and logs
+.env
+.env.*
+*.log
+
+# macOS
+.DS_Store
+
+# Go workspace file
+go.work
+go.work.sum
